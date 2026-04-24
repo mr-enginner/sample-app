@@ -27,9 +27,16 @@ jobs:
       - name: Azure Login
         uses: azure/login@v3
         with:
-          #creds: ${{ secrets.N_AZURE_CREDENTIALS }}
-          creds: '{"clientId":"${{ secrets.N_AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.N_AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.N_AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.N_AZURE_TENANT_ID }}"}'
-         
+          creds: ${{ secrets.N_AZURE_CREDENTIALS }}
+          #creds: '{"clientId":"${{ secrets.N_AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.N_AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.N_AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.N_AZURE_TENANT_ID }}"}'
+      
+      - name: Azure CLI script
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
+            
       # Fetch Databricks secrets from Key Vault
       - name: Get Databricks Secrets
         id: get-secrets
