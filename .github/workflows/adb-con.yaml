@@ -25,9 +25,10 @@ jobs:
 
       # Azure Login using OIDC
       - name: Azure Login
-        uses: azure/login@v2
+        uses: azure/login@v3
         with:
-          creds: ${{ secrets.N_AZURE_CREDENTIALS }}
+          #creds: ${{ secrets.N_AZURE_CREDENTIALS }}
+          creds: '{"clientId":"${{ secrets.N_AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.N_AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.N_AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.N_AZURE_TENANT_ID }}"}'
          
       # Fetch Databricks secrets from Key Vault
       - name: Get Databricks Secrets
