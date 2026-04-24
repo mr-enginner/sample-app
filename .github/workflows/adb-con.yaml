@@ -31,6 +31,7 @@ jobs:
           tenant-id: ${{ secrets.N_AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.N_AZURE_SUBSCRIPTION_ID }}
           client-secret: ${{ secrets.N_AZURE_CLIENT_SECRET }}
+          auth-type: SERVICE_PRINCIPAL
          
       # Fetch Databricks secrets from Key Vault
       - name: Get Databricks Secrets
